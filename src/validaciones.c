@@ -8,7 +8,17 @@ void validarPosicion(char string[])
 {
 	while((strcmp(string, "Delantero") != 0) && (strcmp(string, "Mediocampista") != 0) && (strcmp(string, "Defensor") != 0) && (strcmp(string, "Arquero") != 0))
 	{
-		getString(string, "Error. Ingrese la posición del jugador (delantero, mediocampista, defensor o arquero): ");
+		getString(string, "Error. Ingrese la posiciï¿½n del jugador (delantero, mediocampista, defensor o arquero): ");
+		validateCharacter(string);
+		firstCapitalChar(string);
+	}
+}
+
+void validarEquipo(char string[])
+{
+	while((strcmp(string, "Argentina") != 0) && (strcmp(string, "Inglaterra") != 0) && (strcmp(string, "Brasil") != 0) && (strcmp(string, "Portugal") != 0) && (strcmp(string, "Brasil") != 0) && (strcmp(string, "Portugal") != 0))
+	{
+		getString(string, "Error. Ingrese equipo correcto (Argentina, Inglaterra, Brasil, Portugal o Alemania): ");
 		validateCharacter(string);
 		firstCapitalChar(string);
 	}
@@ -17,13 +27,13 @@ void validarPosicion(char string[])
 void encabezadoFigurita_1()
 {
 	printf("\n===============================================================================================================================================================================================");
-	printf("\n| id   | nombre del jugador      | posicion       | equipo     | director tecnico             | altura   | peso     | año de ingreso | fecha de nacimiento | club             |estado dorada  |");
+	printf("\n| id   | nombre del jugador      | posicion       | equipo     | director tecnico             | altura   | peso     | aï¿½o de ingreso | fecha de nacimiento | club             |estado dorada  |");
 	printf("\n===============================================================================================================================================================================================");
 }
 
 void encabezadoFigurita_2()
 {
 	printf("\n===========================================================");
-	printf("\n| nombre del jugador      | posición       | equipo       |");
+	printf("\n| nombre del jugador      | posiciï¿½n       | equipo       |");
 	printf("\n===========================================================");
 }

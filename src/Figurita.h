@@ -9,7 +9,7 @@ typedef struct
 	int dia;
 	int mes;
 	int anio;
-}eFecha;
+} eFecha;
 
 typedef struct
 {
@@ -25,7 +25,7 @@ typedef struct
 	int estado; // ocupado o vacio
 	int esDorada; // si o no
 	int estadoAlbum; // suelta o pegada
-}eFigurita;
+} eFigurita;
 
 #endif /* FIGURITA_H_ */
 
@@ -44,7 +44,7 @@ typedef struct
  * \param tamClubs variable entera que guarda el tamaño de clubs
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
-int altaFiguritas(eFigurita arrayFiguritas[], int tamFiguritas, int* id, eEquipo arrayEquipos[], int tamEquipos, eClub arrayClubs[], int tamClubs);
+int altaFiguritas(eFigurita arrayFiguritas[], int tamFiguritas, int *id, eEquipo arrayEquipos[], int tamEquipos, eClub arrayClubs[], int tamClubs);
 
 /**
  * \fn int modificarFiguritas(eFigurita[], int, eEquipo[], int, eClub[], int)
@@ -148,7 +148,8 @@ int listadoFiguritasDoradasPegadas(eFigurita arrayFiguritas[], int tamFiguritas,
  * \param clubs array a estructura eClubs
  * \param tamClubs variable entera que guarda el tamaño de clubs
  */
-void mostrarFiguritasPorEquipo(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, int id, char criterio[], eClub clubs[], int tamClubs);
+void mostrarFiguritasPorEquipo(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, int id, char criterio[], eClub clubs[],
+		int tamClubs);
 
 /**
  * \fn int listarFiguritasPegadasPorEquipo(eFigurita[], int, eEquipo[], int, eClub[], int)
@@ -164,6 +165,8 @@ void mostrarFiguritasPorEquipo(eFigurita arrayFiguritas[], int tamFiguritas, eEq
  */
 int listarFiguritasPegadasPorEquipo(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, eClub clubs[], int tamClubs);
 
+int listarFiguritasRepetidas_2(eFigurita arrayRepetidas[], int tamRepetidas, eEquipo arrayEquipos[], int tamEquipos, eClub arrayClubs[], int tamClub);
+
 //HARDCODEOS
 /**
  * \fn int hardcodeoDeFiguritas(eFigurita[], int, int*)
@@ -174,7 +177,7 @@ int listarFiguritasPegadasPorEquipo(eFigurita arrayFiguritas[], int tamFiguritas
  * \param id puntero a entero que guarda la direccion de memoria del ID
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
-int hardcodeoDeFiguritas(eFigurita arrayFiguritas[], int tamFiguritas, int* id, int* flag);
+int hardcodeoDeFiguritas(eFigurita arrayFiguritas[], int tamFiguritas, int *id, int *flag);
 
 //INICIALIZACIONES
 /**
@@ -196,7 +199,6 @@ int inicializarFiguritas_ArrayFiguritas(eFigurita arrayFiguritas[], int tamFigur
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
 int inicializarColeccionRepetidas(eFigurita arrayFiguritasRepetidas[], int tamRepetidas);
-
 
 //OTRAS FUNCIONES
 /**
@@ -265,7 +267,9 @@ int buscarFiguritaPorID(eFigurita arrayFiguritas[], int tamFiguritas, int idIngr
  * \param tamClubs variable entera que guarda el tamaño de clubs
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
-int comprarPaqueteDeFiguritasRandom(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo arrayEquipos[], int tamEquipos, eAlbum* album, eFigurita arrayRepetidas[], int tamRepetidas, int* cantidadRepetidas, int* contadorSobres, int* cantidadSobresTotal, int* precioAcumulado, int* precioAlbumCompleto, eClub clubs[], int tamClubs);
+int comprarPaqueteDeFiguritasRandom(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo arrayEquipos[], int tamEquipos, eAlbum *album,
+		eFigurita arrayRepetidas[], int tamRepetidas, int *cantidadRepetidas, int *contadorSobres, int *cantidadSobresTotal, int *precioAcumulado,
+		int *precioAlbumCompleto, eClub clubs[], int tamClubs);
 
 /**
  * \fn int intercambiarFiguritas(eFigurita[], int, eEquipo[], int, eFigurita[], int, int*, eClub[], int)
@@ -282,39 +286,67 @@ int comprarPaqueteDeFiguritasRandom(eFigurita arrayFiguritas[], int tamFiguritas
  * \param tamClubs variable entera que guarda el tamaño de clubs
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
-int intercambiarFiguritas(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, eFigurita arrayRepetidas[], int tamRepetidas, int* flag, eClub clubs[], int tamClubs);
+int intercambiarFiguritas(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, eFigurita arrayRepetidas[], int tamRepetidas,
+		int *flag, eClub clubs[], int tamClubs);
 
 /**
- * \fn void contadorDeClubs(eFigurita[], int, int*, int*, int*, int*, int*, int*, int*, int*, int*, int*, int*)
- * \brief Funcion que cuenta la cantidad de veces que sale un club
+ * @fn int mostrarClubesConMasApariciones(eFigurita[], int, eEquipo[], int, eClub[], int)
+ * @brief Funcion que muestra los clubes que mas aparecen entre los pegados
  *
- * \param arrayFiguritas array a estructura eFigurita
- * \param tamFiguritas variable entera que guarda el tamaño de figuritas
- * \param contadorBJ contador de boca juniors
- * \param contadorRP contador de river plate
- * \param contadorLiverpool contador de liverpool
- * \param contadorChelsea contador de chelsea
- * \param contadorLeverkusen contador de leverkusen
- * \param contadorColonia contador de colonia
- * \param contadorOporto contador de oporto
- * \param contadorLisboa contador de lisboa
- * \param contadorSantos contador de santos
- * \param contadorCorinthias contador de corinthias
- * \param idClubMayor id del club que mas veces aparece
+ * @param arrayFiguritas array a estructura eFigurita
+ * @param tamFiguritas variable entera que guarda el tamaño de figuritas
+ * @param equipos array a estructura eEquipo
+ * @param tamEquipos variable entera que guarda el tamaño de equipos
+ * @param clubs array de estructura eClub
+ * @param tamClubs variable entera que guarda el tamaño de clubs
+ * @return todoOk retorna -1 si esta mal y 0 si esta bien
  */
-void contadorDeClubs(eFigurita arrayFiguritas[], int tamFiguritas, int* contadorBJ, int* contadorRP, int* contadorLiverpool, int* contadorChelsea, int* contadorLeverkusen, int* contadorColonia, int* contadorOporto, int* contadorLisboa, int* contadorSantos, int* contadorCorinthias, int* idClubMayor);
+int mostrarClubesConMasApariciones(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, eClub clubs[], int tamClubs);
+
 
 /**
- * \fn int listarFiguritasPegadasPorClubMayor(eFigurita[], int, eEquipo[], int, eClub[], int, int)
- * \brief
+ * @fn int contadorDeClubs(eFigurita[], int, eClub[], int, int[])
+ * @brief Funcion que cuenta la cantidad de figuritas que hay por club
  *
- * \param arrayFiguritas array a estructura eFigurita
- * \param tamFiguritas variable entera que guarda el tamaño de figuritas
- * \param equipos array a estructura eEquipo
- * \param tamEquipos variable entera que guarda el tamaño de equipos
- * \param clubs array de estructura eClub
- * \param tamClubs variable entera que guarda el tamaño de clubs
- * \param idClubMayor id del club que mas veces aparece
- * \return todoOk retorna -1 si esta mal y 0 si esta bien
+ * @param arrayFiguritas  array a estructura eFigurita
+ * @param tamFiguritas variable entera que guarda el tamaño de figuritas
+ * @param clubs array de estructura eClub
+ * @param tamClubs variable entera que guarda el tamaño de clubs
+ * @param contadores array de enteros que guarda los valores aumentados de cada club
+ * @return todoOk retorna -1 si esta mal y 0 si esta bien
  */
-int listarFiguritasPegadasPorClubMayor(eFigurita arrayFiguritas[], int tamFiguritas, eEquipo equipos[], int tamEquipos, eClub clubs[], int tamClubs, int idClubMayor);
+int contadorDeClubs(eFigurita arrayFiguritas[], int tamFiguritas, eClub arrayClubs[], int tamClubs, int contadores[]);
+
+/**
+ * @fn int buscarMayorCantidadDeClubs(int[], int)
+ * @brief Funcion que busca la mayor cantidad de clubs mediante comparaciones entre contadores
+ *
+ * @param contadores array de enteros que guarda los valores aumentados de cada club
+ * @param tamClubs variable entera que guarda el tamaño de clubs
+ * @return todoOk retorna -1 si esta mal y 0 si esta bien
+ */
+int buscarMayorCantidadDeClubs(int contadores[], int tamClubs);
+
+/**
+ * @fn void pegarFigurita(eAlbum*, int, eFigurita[], int)
+ * @brief Funcion que pega una figurita en el album
+ *
+ * @param album
+ * @param indiceLibre
+ * @param arrayFiguritas
+ * @param indiceRandom
+ */
+void pegarFigurita(eAlbum *album, int indiceLibre, eFigurita arrayFiguritas[], int indiceRandom);
+
+/**
+ * @fn void calcularPrecioTotal(eAlbum*, int*, int*, int*, int*, int*)
+ * @brief Funcion que calcula los precios totales de la compra de sobres
+ *
+ * @param album variable de tipo eAlbum que guarda un album
+ * @param flagSobres bandera que cambia de estado dependiendo si el album esta lleno o no
+ * @param cantidadSobresTotal variable que guarda la cantidad de sobres que se compraron en total
+ * @param contadorSobres variable que guarda la cantidad de sobres a medida que se van comprando
+ * @param precioAlbumCompleto variable que guarda lo que se gasto para completar el album
+ * @param precioAcumulado variable que guarda el precio que se va acumulando con la compra de sobres
+ */
+void calcularPrecioTotal(eAlbum *album, int *flagSobres, int *cantidadSobresTotal, int *contadorSobres, int *precioAlbumCompleto, int *precioAcumulado);

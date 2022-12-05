@@ -4,6 +4,7 @@
 #endif /* VALIDACIONES_H_ */
 
 void validarPosicion(char string[]);
+void validarEquipo(char string[]);
 
 //encabezados
 void encabezadoFigurita_1();

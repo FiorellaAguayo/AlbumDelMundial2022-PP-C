@@ -15,7 +15,7 @@ typedef struct
  * \brief Funcion que carga datos de los equipos
  *
  * \param arrayEquipos array a estructura eEquipo
- * \param tamEquipos tamaño de los equipos
+ * \param tamEquipos tamaï¿½o de los equipos
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
 int cargaDeEquipos(eEquipo arrayEquipos[], int tamEquipos);
@@ -33,7 +33,10 @@ void mostrarUnEquipo(eEquipo unEquipo);
  * \brief Funcion que lista los equipos
  *
  * \param arrayEquipos array a estructura eEquipo
- * \param tamEquipos tamaño de los equipos
+ * \param tamEquipos tamaï¿½o de los equipos
  * \return todoOk retorna -1 si esta mal y 0 si esta bien
  */
 int listarEquipos(eEquipo arrayEquipos[], int tamEquipos);
+
+
+int buscarEquipoPorID(eEquipo equipos[], int tamEquipos, int id);

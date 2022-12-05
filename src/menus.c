@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "menus.h"
 #include "inputs.h"
 #include "validaciones.h"
@@ -20,7 +21,6 @@ int menuPrincipal()
 
 	return option;
 }
-
 
 int menuAdministrador()
 {
@@ -98,21 +98,26 @@ int menuInformes()
 	return option;
 }
 
-int menuListarPegadasPorEquipo()
+int menuListarPegadasPorEquipo(eEquipo equipos[])
 {
-	int option;
+	char paisSeleccionado[30];
+	int idEquipo;
 
 	printf("\n----------------------------------------------------------");
 	printf("\n Seleccione el equipo de figuritas pegadas a listar...    ");
 	printf("\n----------------------------------------------------------");
-	printf("\n1. Argentina.");
-	printf("\n2. Inglaterra.");
-	printf("\n3. Alemania.");
-	printf("\n4. Portugal.");
-	printf("\n5. Brasil.");
 
-	pedirEntero(&option, "\nIngrese opcion: ", "\nError. La opcion ingresada no es valida.", 1, 5);
+	printf("\nPuede seleccionar los siguientes paises (Argentina - Inglaterra - Alemania - Portugal - Brasil)");
+	pedirCadena(paisSeleccionado, "\nIngrese un pais que desea listar: ", "\nError, ingrese bien el pais", 30);
+	validarEquipo(paisSeleccionado);
 
-	return option;
+	for(int i = 0; i < 5;  i++)
+	{
+		if(strcmp(paisSeleccionado, equipos[i].descripcion) == 0)
+		{
+			idEquipo = equipos[i].id;
+		}
+	}
+	return idEquipo;
 }
 

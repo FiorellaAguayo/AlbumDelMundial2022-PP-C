@@ -21,7 +21,6 @@ int cargaDeClubs(eClub arrayClubs[], int tamClubs)
 			strcpy(arrayClubs[i].entrenador, entrenador[i]);
 			arrayClubs[i].anioFundacion = anioFundacion[i];
 		}
-		printf("\nClubs cargados con exito.\n");
 		todoOk = 0;
 	}
 	return todoOk;

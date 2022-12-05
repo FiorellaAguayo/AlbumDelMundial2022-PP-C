@@ -1,5 +1,6 @@
 #ifndef MENUS_H_
 #define MENUS_H_
+#include "Equipo.h"
 
 #endif /* MENUS_H_ */
 
@@ -41,7 +42,7 @@ int menuInformes();
  *
  * \return option variable entera que garda la opcion ingresada por el usuario
  */
-int menuListarPegadasPorEquipo();
+int menuListarPegadasPorEquipo(eEquipo equipos[]);
 
 /**
  * \fn int menuColeccionista()

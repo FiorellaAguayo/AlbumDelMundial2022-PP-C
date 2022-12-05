@@ -14,7 +14,6 @@ void inicializarEstado_Album(eAlbum album)
 	album.estado = INCOMPLETO;
 }
 
-
 //----------------------------------------------
 
 void inicializarID_Album(eAlbum* album)
@@ -96,3 +95,5 @@ int buscarFiguritasRepetidasPorID_Album(eAlbum* album, int id)
 	}
 	return repetida;
 }
+
+

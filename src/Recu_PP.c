@@ -31,73 +31,85 @@ int main(void)
 	int flag = 0;
 	int flag2 = 0;
 
-	int contadorBJ = 0, contadorRP = 0, contadorLiverpool = 0, contadorChelsea = 0, contadorLeverkusen = 0, contadorColonia = 0, contadorOporto = 0, contadorLisboa = 0, contadorSantos = 0, contadorCorinthias = 0;
-	int idClubMayor;
-
-	if(cargaDeEquipos(equipos, TAM_EQUIPOS) == -1)
+	if (cargaDeEquipos(equipos, TAM_EQUIPOS) == 0)
+	{
+		printf("\nEquipos cargados con exito.\n");
+	}
+	else
 	{
 		printf("\nHubo un problema al cargar los equipos.\n");
 	}
 
-	if(inicializarFiguritas_ArrayFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS) == -1)
+	if (inicializarFiguritas_ArrayFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS) == 0)
+	{
+		printf("\nFiguritas inicializadas con exito.\n");
+	}
+	else
 	{
 		printf("\nHubo un problema al inicializar las figuritas.\n");
 	}
 
-	if(hardcodeoDeFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, &id, &flag) == -1)
+	if (hardcodeoDeFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, &id, &flag) == 0)
+	{
+		printf("\nFiguritas hardcodeadas con exito.\n");
+	}
+	else
 	{
 		printf("\nHubo un problema al hardcodear las figuritas.\n");
 	}
 
-	if(cargaDeClubs(clubs, TAM_CLUBS) == -1)
+	if (cargaDeClubs(clubs, TAM_CLUBS) == 0)
+	{
+		printf("\nClubs cargados con exito.\n");
+	}
+	else
 	{
 		printf("\nHubo un problema al cargar los equipos.\n");
 	}
 
-
 	//PUNTO COLECCIONISTA 2
-	//inicializo estado figurita VACIO, NO DORADA, SUELTA (ya esta)
-	//inicializo estado ALBUM
+
 	inicializarEstado_Album(album);
 
-	//inicializo repetidas
-	if(inicializarColeccionRepetidas(coleccionRepetidas, TAM_REPETIDAS) == -1)
+	if (inicializarColeccionRepetidas(coleccionRepetidas, TAM_REPETIDAS) == -1)
 	{
 		printf("\nHubo un problema al inicializar las figuritas.\n");
 	}
 
-	//inicializo los id en el album
 	inicializarID_Album(&album);
-	//inicializo los id es dorada
 	inicializarEstadoDoradas_Album(&album);
-
 	inicializarIsEmpty_Album(&album);
 
-	while(salir == 0)
+	while (salir == 0)
 	{
-		switch(menuPrincipal())
+		switch (menuPrincipal())
 		{
 			case 1:
 				//perfil administrador
-				switch(menuAdministrador())
+				switch (menuAdministrador())
 				{
 					case 1:
 						//alta figurita
-						if(altaFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, &id, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
+						if (altaFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, &id, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == 0)
 						{
-							printf("\nHubo un problema al hacer el alta de figuritas.\n");
+							printf("\nAlta exitosa !!!\n");
+							flag = 1;
 						}
 						else
 						{
-							flag = 1;
+							printf("\nHubo un problema al hacer el alta de figuritas.\n");
 						}
 						break;
 
 					case 2:
 						//modificar figurita
-						if(flag)
+						if (flag)
 						{
-							if(modificarFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
+							if (modificarFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == 0)
+							{
+								printf("\nModificacion exitosa !!!\n");
+							}
+							else
 							{
 								printf("\nHubo un problema al hacer la modificacion de figuritas.\n");
 							}
@@ -110,9 +122,9 @@ int main(void)
 
 					case 3:
 						//listar figuritas
-						if(flag)
+						if (flag)
 						{
-							if(listarFiguritasCreadas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
+							if (listarFiguritasCreadas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
 							{
 								printf("\nHubo un problema al hacer la modificacion de figuritas.\n");
 							}
@@ -127,12 +139,14 @@ int main(void)
 
 			case 2:
 				//perfil coleccionista
-				if(flag)
+				if (flag)
 				{
-					switch(menuColeccionista())
+					switch (menuColeccionista())
 					{
 						case 1:
-							if(comprarPaqueteDeFiguritasRandom(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, &album, coleccionRepetidas, TAM_REPETIDAS, &cantidadRepeticiones, &contadorSobres, &cantidadSobresTotal, &precioAcumulado, &precioAlbumCompleto, clubs, TAM_CLUBS) == -1)
+							if (comprarPaqueteDeFiguritasRandom(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, &album, coleccionRepetidas,
+									TAM_REPETIDAS, &cantidadRepeticiones, &contadorSobres, &cantidadSobresTotal, &precioAcumulado, &precioAlbumCompleto, clubs,
+									TAM_CLUBS) == -1)
 							{
 								printf("\nHubo un problema al hacer la compra de figuritas.\n");
 							}
@@ -143,7 +157,8 @@ int main(void)
 							break;
 
 						case 2:
-							if(intercambiarFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, coleccionRepetidas, TAM_REPETIDAS, &flag2, clubs, TAM_CLUBS) == -1)
+							if (intercambiarFiguritas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, coleccionRepetidas, TAM_REPETIDAS, &flag2,
+									clubs, TAM_CLUBS) == -1)
 							{
 								printf("\nHubo un problema al hacer el intercambio de figuritas.\n");
 							}
@@ -158,13 +173,13 @@ int main(void)
 
 			case 3:
 				//informes
-				switch(menuInformes())
+				switch (menuInformes())
 				{
 					case 1:
 						// Listado de figuritas pegadas
-						if(flag)
+						if (flag)
 						{
-							if(listadoFiguritasPegadas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS) == -1)
+							if (listadoFiguritasPegadas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS) == -1)
 							{
 								printf("\nHubo un problema al hacer el listado de figuritas pegadas.\n");
 							}
@@ -176,11 +191,11 @@ int main(void)
 						break;
 
 					case 2:
-						if(flag)
+						if (flag)
 						{
 							printf("\n========== listado de figuritas repetidas =================");
 							printf("\n\nCantidad de repeticiones en la pila: %d", cantidadRepeticiones);
-							if(listarFiguritasRepetidas(coleccionRepetidas, TAM_REPETIDAS, equipos, TAM_EQUIPOS) == -1)
+							if (listarFiguritasRepetidas(coleccionRepetidas, TAM_REPETIDAS, equipos, TAM_EQUIPOS) == -1)
 							{
 								printf("\nHubo un problema al hacer el listado de figuritas repetidas.\n");
 							}
@@ -192,9 +207,9 @@ int main(void)
 						break;
 
 					case 3:
-						if(flag)
+						if (flag)
 						{
-							if(listadoFiguritasDoradasPegadas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
+							if (listadoFiguritasDoradasPegadas(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
 							{
 								printf("\nHubo un problema al hacer el listado de figuritas doradas pegadas.\n");
 							}
@@ -206,11 +221,11 @@ int main(void)
 						break;
 
 					case 4:
-						if(flag)
+						if (flag)
 						{
-							if(cantidadSobresTotal == 0)
+							if (cantidadSobresTotal == 0)
 							{
-								printf("\nEl album no está completo.\n");
+								printf("\nEl album no estï¿½ completo.\n");
 							}
 							else
 							{
@@ -224,11 +239,11 @@ int main(void)
 						break;
 
 					case 5:
-						if(flag)
+						if (flag)
 						{
-							if(precioAcumulado == 0)
+							if (precioAcumulado == 0)
 							{
-								printf("\nEl coleccionista no ha comprado ningún sobre.\n");
+								printf("\nEl coleccionista no ha comprado ningï¿½n sobre.\n");
 							}
 							else
 							{
@@ -242,11 +257,11 @@ int main(void)
 						break;
 
 					case 6:
-						if(flag)
+						if (flag)
 						{
-							if(album.estado == INCOMPLETO)
+							if (album.estado == INCOMPLETO)
 							{
-								printf("\nEl album no está completo.\n");
+								printf("\nEl album no estï¿½ completo.\n");
 							}
 							else
 							{
@@ -260,11 +275,11 @@ int main(void)
 						break;
 
 					case 7:
-						if(flag)
+						if (flag)
 						{
-							if(listarFiguritasPegadasPorEquipo(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
+							if (listarFiguritasPegadasPorEquipo(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
 							{
-								printf("\nHubo un problema al hacer el listado de figuritas doradas pegadas.\n");
+								printf("\nHubo un problema al hacer el listado de figuritas pegadas.\n");
 							}
 						}
 						else
@@ -274,12 +289,11 @@ int main(void)
 						break;
 
 					case 8:
-						if(flag)
+						if (flag)
 						{
-							contadorDeClubs(bancoFiguritas, TAM_BANCO_FIGURITAS, &contadorBJ, &contadorRP, &contadorLiverpool, &contadorChelsea, &contadorLeverkusen, &contadorColonia, &contadorOporto, &contadorLisboa, &contadorSantos, &contadorCorinthias, &idClubMayor);
-							if(listarFiguritasPegadasPorClubMayor(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS, idClubMayor) == -1)
+							if(mostrarClubesConMasApariciones(bancoFiguritas, TAM_BANCO_FIGURITAS, equipos, TAM_EQUIPOS, clubs, TAM_CLUBS) == -1)
 							{
-								printf("\nHubo un problema al hacer el listado de figuritas segun el club.\n");
+								printf("\nHubo un problema al mostar los cluebs quqe aparecen mas,\n");
 							}
 						}
 						else
