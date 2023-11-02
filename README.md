@@ -1,16 +1,5 @@
 # AlbumDelMundial2022-PP-C
 
-# Tarea
-* Generar los siguientes informes:
-    1. Listado de figuritas pegadas. Se deberá mostrar el nombre del jugador, el equipo y la posición.
-    2. Listado de figuritas repetidas. Se deberá mostrar el nombre del jugador, el equipo y la cantidad de repeticiones en la pila.
-    3. Listado de figuritas doradas que están pegadas en el álbum.
-    4. Cuántos sobres tuvo que comprar el coleccionista para llenar el álbum. Tener en cuenta que una vez llenado el álbum puede seguir abriendo sobres.
-    5. Cuánto dinero lleva gastado el coleccionista, teniendo en cuenta que cada paquete cuesta $170.
-    6. Cuánto dinero gastó el coleccionista para completar el álbum, teniendo en cuenta que cada paquete cuesta $170.
-    7. Seleccionar un equipo y listar todas las figuritas que estén pegadas.
-    8.  Listar figuritas pegadas por el club con mayor cantidad de figuritas
-
 # Vista del menú
 ![Menú](https://github.com/FiorellaAguayo/AlbumVirtualDelMundial2022-PP-C/blob/main/images/menu.png)
 
