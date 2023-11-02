@@ -12,6 +12,10 @@
     8.  Listar figuritas pegadas por el club con mayor cantidad de figuritas
 
 # Vista del menú
+![Menú](https://github.com/FiorellaAguayo/AlbumVirtualDelMundial2022-PP-C/blob/main/images/menu.png)
+
+# DER
+![DER](https://github.com/FiorellaAguayo/AlbumVirtualDelMundial2022-PP-C/blob/main/images/DER.png)
 
 Prototipo de cada función del núcleo del programa con la documentación correspondiente.
 
